@@ -19,7 +19,7 @@ let flag = true;
 while (flag) {
     console.log("STACK")
     console.log("OPERATIONS")
-    console.log("1. POP || 2. PUSH || 3. isEmpty || 4. findSize")
+    console.log("1. POP || 2. PUSH || 3. isEmpty || 4. findSize || 5. QUIT")
     let input = prompt("Choose a option")
     switch (input) {
         case "1": let popped = pop();
@@ -32,6 +32,8 @@ while (flag) {
         case "3": isEmpty() ? console.log("Stack is empty") : console.log("Stack is not empty")
             break;
         case "4": console.log("Size of Stack is ", findSize());
+            break;
+        case "5": flag = false;
             break;
         default: console.log("Sorry wrong input, try again!");
    }
