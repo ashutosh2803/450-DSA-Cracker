@@ -11,6 +11,10 @@
 
 let arr = [];
 
+let size = arr.length;
+let top1 = -1;
+let top2 = size;
+
 let input = `6
 1 1 2
 1 1 3
@@ -53,15 +57,11 @@ function pop1() {
 function pop2() {
     if (top2 < size) {
         console.log(arr[top2]);
-        top2--;
+        top2++;
     } else {
         console.log("Stack is empty!");
     }
 }
-
-let size = arr.length;
-let top1 = -1;
-let top2 = size;
 
 for (let i = 0; i < operations; i++){
     let temp = input[i].trim().split(" ").map(Number);
