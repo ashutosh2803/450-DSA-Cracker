@@ -23,44 +23,62 @@ let input = `6
 input = input.trim().split("\n");
 let operations = +input.shift();
 
-let top1 = 0;
-let limit1 = arr.length - 1 / 2;
-let top2 = 0;
-let limit2 = arr.length - 1;
-
-const push1 = (element) => {
-    if (top1 > limit1) {
-        arr[++top1] = element;
+function push1(element) {
+    if (top1 < top2 - 1) {
+        top1++;
+        arr[top1] = element;
     } else {
-        console.log("Stack1 Overflow!");
+        console.log("Stack Overflow!");
     }
 }
 
-const push2 = (element) => {
-    if (top2 > limit2) {
-        console.log("Stack2 Overflow!");
+function push2(element) {
+    if (top1 < top2 - 1) {
+        top2--;
+        arr[top2] = element;
     } else {
-        arr[++top2] = element;
+        console.log("Stack Overflow!");
     }
 }
 
-const pop1 = () => {
-    
+function pop1() {
+    if (top1 >= 0) {
+        console.log(arr[top1]);
+        top1--;
+    } else {
+        console.log("Stack is empty!");
+    }
 }
 
-const pop2 = () => {
-
+function pop2() {
+    if (top2 < size) {
+        console.log(arr[top2]);
+        top2--;
+    } else {
+        console.log("Stack is empty!");
+    }
 }
+
+let size = arr.length;
+let top1 = -1;
+let top2 = size;
 
 for (let i = 0; i < operations; i++){
     let temp = input[i].trim().split(" ").map(Number);
-    switch (temp[0]) {
-        case 1: 
-            break;
-        case 2: break;
-        default: break;
+    
+    if (temp[0] === 1) {
+        if (temp[1] === 1) {
+            push1(temp[2]);
+        } else {
+            pop1();
+        }
+    }
+    if (temp[0] === 2) {
+        if (temp[1] === 1) {
+            push2(temp[2]);
+        } else {
+            pop2();
+        }
     }
 }
-
-console.log(arr);
 
