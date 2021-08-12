@@ -7,6 +7,9 @@ input = input.trim().split("\n");
 let operations = +input.shift();
 
 const checkBalancedParanthesis = (str) => {
+    if (str.length == 0) {
+        return false;
+    }
     
 }
 
